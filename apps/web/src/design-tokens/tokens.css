@@ -1,0 +1,279 @@
+/**
+ * Design token CSS custom properties.
+ *
+ * Light palette is applied on :root.
+ * Dark palette is applied when the <html> element carries the `dark` class
+ * (managed by ThemeProvider) *and* when the OS prefers dark via media query.
+ *
+ * Usage in components:
+ *   background-color: var(--color-bg-base);
+ *   border-radius: var(--radius-lg);
+ *   box-shadow: var(--shadow-sm);
+ *
+ * Do not use raw hex values in components — always reference a token.
+ */
+
+/* ---------------------------------------------------------------------------
+   Invariant tokens — same in every theme
+   --------------------------------------------------------------------------- */
+
+:root {
+  /* Spacing */
+  --spacing-px:  1px;
+  --spacing-0:   0px;
+  --spacing-0\.5: 2px;
+  --spacing-1:   4px;
+  --spacing-1\.5: 6px;
+  --spacing-2:   8px;
+  --spacing-2\.5: 10px;
+  --spacing-3:   12px;
+  --spacing-3\.5: 14px;
+  --spacing-4:   16px;
+  --spacing-5:   20px;
+  --spacing-6:   24px;
+  --spacing-7:   28px;
+  --spacing-8:   32px;
+  --spacing-9:   36px;
+  --spacing-10:  40px;
+  --spacing-11:  44px;
+  --spacing-12:  48px;
+  --spacing-14:  56px;
+  --spacing-16:  64px;
+  --spacing-20:  80px;
+  --spacing-24:  96px;
+  --spacing-32:  128px;
+  --spacing-40:  160px;
+  --spacing-48:  192px;
+  --spacing-64:  256px;
+  --spacing-80:  320px;
+  --spacing-96:  384px;
+
+  /* Border radius */
+  --radius-none: 0px;
+  --radius-sm:   2px;
+  --radius-base: 4px;
+  --radius-md:   6px;
+  --radius-lg:   8px;
+  --radius-xl:   12px;
+  --radius-2xl:  16px;
+  --radius-3xl:  24px;
+  --radius-full: 9999px;
+
+  /* Shadows */
+  --shadow-none:       none;
+  --shadow-xs:         0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --shadow-sm:         0 1px 3px 0 rgb(0 0 0 / 0.10), 0 1px 2px -1px rgb(0 0 0 / 0.10);
+  --shadow-base:       0 4px 6px -1px rgb(0 0 0 / 0.10), 0 2px 4px -2px rgb(0 0 0 / 0.10);
+  --shadow-md:         0 10px 15px -3px rgb(0 0 0 / 0.10), 0 4px 6px -4px rgb(0 0 0 / 0.10);
+  --shadow-lg:         0 20px 25px -5px rgb(0 0 0 / 0.10), 0 8px 10px -6px rgb(0 0 0 / 0.10);
+  --shadow-xl:         0 25px 50px -12px rgb(0 0 0 / 0.25);
+  --shadow-inner:      inset 0 2px 4px 0 rgb(0 0 0 / 0.05);
+  --shadow-focus-ring: 0 0 0 3px rgb(99 102 241 / 0.45);
+
+  /* Z-index layers */
+  --z-hide:     -1;
+  --z-base:      0;
+  --z-raised:    1;
+  --z-dropdown:  1000;
+  --z-sticky:    1100;
+  --z-overlay:   1200;
+  --z-modal:     1300;
+  --z-popover:   1400;
+  --z-toast:     1500;
+  --z-tooltip:   1600;
+
+  /* Transition defaults */
+  --duration-instant: 0ms;
+  --duration-fast:    100ms;
+  --duration-normal:  200ms;
+  --duration-slow:    300ms;
+  --duration-lazy:    500ms;
+
+  --ease-linear:     linear;
+  --ease-in:         cubic-bezier(0.4, 0, 1, 1);
+  --ease-out:        cubic-bezier(0, 0, 0.2, 1);
+  --ease-in-out:     cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-spring:     cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* ---------------------------------------------------------------------------
+   Light palette (default / :root)
+   --------------------------------------------------------------------------- */
+
+:root {
+  /* Backgrounds */
+  --color-bg-base:    #ffffff;
+  --color-bg-subtle:  #f9fafb;
+  --color-bg-muted:   #f3f4f6;
+  --color-bg-inverse: #111827;
+
+  /* Surfaces */
+  --color-surface-default: #ffffff;
+  --color-surface-raised:  #ffffff;
+  --color-surface-overlay: #ffffff;
+  --color-surface-sunken:  #f9fafb;
+
+  /* Borders */
+  --color-border-default: #e5e7eb;
+  --color-border-subtle:  #f3f4f6;
+  --color-border-strong:  #9ca3af;
+  --color-border-focus:   #6366f1;
+
+  /* Text */
+  --color-text-primary:   #111827;
+  --color-text-secondary: #4b5563;
+  --color-text-tertiary:  #9ca3af;
+  --color-text-disabled:  #d1d5db;
+  --color-text-inverse:   #ffffff;
+  --color-text-link:      #4f46e5;
+  --color-text-link-hover: #4338ca;
+
+  /* Brand */
+  --color-brand-default: #4f46e5;
+  --color-brand-hover:   #4338ca;
+  --color-brand-active:  #3730a3;
+  --color-brand-subtle:  #eef2ff;
+  --color-brand-text:    #ffffff;
+
+  /* Success */
+  --color-success-default: #16a34a;
+  --color-success-subtle:  #f0fdf4;
+  --color-success-text:    #15803d;
+
+  /* Warning */
+  --color-warning-default: #f59e0b;
+  --color-warning-subtle:  #fffbeb;
+  --color-warning-text:    #b45309;
+
+  /* Danger */
+  --color-danger-default: #e11d48;
+  --color-danger-hover:   #be123c;
+  --color-danger-subtle:  #fff1f2;
+  --color-danger-text:    #be123c;
+
+  /* Info */
+  --color-info-default: #0284c7;
+  --color-info-subtle:  #f0f9ff;
+  --color-info-text:    #0369a1;
+}
+
+/* ---------------------------------------------------------------------------
+   Dark palette — class-based (JS-controlled) takes precedence
+   --------------------------------------------------------------------------- */
+
+.dark {
+  /* Backgrounds */
+  --color-bg-base:    #030712;
+  --color-bg-subtle:  #111827;
+  --color-bg-muted:   #1f2937;
+  --color-bg-inverse: #ffffff;
+
+  /* Surfaces */
+  --color-surface-default: #111827;
+  --color-surface-raised:  #1f2937;
+  --color-surface-overlay: #1f2937;
+  --color-surface-sunken:  #030712;
+
+  /* Borders */
+  --color-border-default: #374151;
+  --color-border-subtle:  #1f2937;
+  --color-border-strong:  #6b7280;
+  --color-border-focus:   #818cf8;
+
+  /* Text */
+  --color-text-primary:   #f9fafb;
+  --color-text-secondary: #9ca3af;
+  --color-text-tertiary:  #6b7280;
+  --color-text-disabled:  #374151;
+  --color-text-inverse:   #111827;
+  --color-text-link:      #818cf8;
+  --color-text-link-hover: #a5b4fc;
+
+  /* Brand */
+  --color-brand-default: #6366f1;
+  --color-brand-hover:   #818cf8;
+  --color-brand-active:  #a5b4fc;
+  --color-brand-subtle:  #1e1b4b;
+  --color-brand-text:    #ffffff;
+
+  /* Success */
+  --color-success-default: #22c55e;
+  --color-success-subtle:  #052e16;
+  --color-success-text:    #4ade80;
+
+  /* Warning */
+  --color-warning-default: #fbbf24;
+  --color-warning-subtle:  #451a03;
+  --color-warning-text:    #fbbf24;
+
+  /* Danger */
+  --color-danger-default: #f43f5e;
+  --color-danger-hover:   #fb7185;
+  --color-danger-subtle:  #4c0519;
+  --color-danger-text:    #fb7185;
+
+  /* Info */
+  --color-info-default: #0ea5e9;
+  --color-info-subtle:  #082f49;
+  --color-info-text:    #38bdf8;
+}
+
+/* OS-level dark preference for users who haven't explicitly set a theme */
+@media (prefers-color-scheme: dark) {
+  :root:not(.light) {
+    /* Backgrounds */
+    --color-bg-base:    #030712;
+    --color-bg-subtle:  #111827;
+    --color-bg-muted:   #1f2937;
+    --color-bg-inverse: #ffffff;
+
+    /* Surfaces */
+    --color-surface-default: #111827;
+    --color-surface-raised:  #1f2937;
+    --color-surface-overlay: #1f2937;
+    --color-surface-sunken:  #030712;
+
+    /* Borders */
+    --color-border-default: #374151;
+    --color-border-subtle:  #1f2937;
+    --color-border-strong:  #6b7280;
+    --color-border-focus:   #818cf8;
+
+    /* Text */
+    --color-text-primary:   #f9fafb;
+    --color-text-secondary: #9ca3af;
+    --color-text-tertiary:  #6b7280;
+    --color-text-disabled:  #374151;
+    --color-text-inverse:   #111827;
+    --color-text-link:      #818cf8;
+    --color-text-link-hover: #a5b4fc;
+
+    /* Brand */
+    --color-brand-default: #6366f1;
+    --color-brand-hover:   #818cf8;
+    --color-brand-active:  #a5b4fc;
+    --color-brand-subtle:  #1e1b4b;
+    --color-brand-text:    #ffffff;
+
+    /* Success */
+    --color-success-default: #22c55e;
+    --color-success-subtle:  #052e16;
+    --color-success-text:    #4ade80;
+
+    /* Warning */
+    --color-warning-default: #fbbf24;
+    --color-warning-subtle:  #451a03;
+    --color-warning-text:    #fbbf24;
+
+    /* Danger */
+    --color-danger-default: #f43f5e;
+    --color-danger-hover:   #fb7185;
+    --color-danger-subtle:  #4c0519;
+    --color-danger-text:    #fb7185;
+
+    /* Info */
+    --color-info-default: #0ea5e9;
+    --color-info-subtle:  #082f49;
+    --color-info-text:    #38bdf8;
+  }
+}
